@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    /* Navigation bar styling */
+    ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+/* List stylings */
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #0277e6;
+}
+/* Grey Box */
+    div.first {
+        border: 2px solid black;
+  padding: 25px;
+  background-color: rgb(174, 188, 207);
+  background-repeat: no-repeat;
+  background-size: 800px 800px;
+    /* Footer stylings */
+    }
+    footer {
+        text-align: center;
+        background-color: grey;
+        color: white;
+        padding: 20px;
+    }
+p.a {
+  font: bold 50px Arial, sans-serif;
+}    
+    /* Style the body */
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+/* Header/Logo Title */
+.header {
+  padding: 20px;
+  text-align: center;
+  background: #0277e6;
+  color: white;
+  font-size: 35px;
+}
+</style>
+<!-- Main TTS Function Here -->
+<head>
+  <!-- Div Class references back to CSS definition of Header above -->
+    <div class="header">
+        <h1>Voicebox!</h1>
+        <p>A platform for communication</p>
+        </div>
+        <!-- Draws on Meta data from MS for TTS and Site -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VoiceBox!</title>
+</head>
+
+<body>
+  <!-- Navigation bar -->
+    <header>
+        <ul>
+            <li><a class="active" href="TTSTest.html">Voicebox!</a></li>
+            <li><a href="AboutPage.html">About</a></li>
+            <li><a href="ContactPage.html">Contact</a></li>
+          </ul>
+    </header>
+    <!-- Voice Selection Drop Down Bar on site -->
+    <div class="first">
+        <p class="a">Select Voice:</p> <select id='voiceList'> 
+    </div>
+
+    <!-- Input Field for Users to input a sentence and Submit Button -->
+</select> <br><br>  
+    <input id='txtInput' size="100" /> <br><br>    
+    <button id='btnSpeak'>Speak!</button>
+
+    <!-- Script for Text To Speech Function, the script uses populatevoices and speechsynth to compile a range of voices and convert text to speech -->
+    <script>
+        var txtInput = document.querySelector('#txtInput');
+        var voiceList = document.querySelector('#voiceList');
+        var btnSpeak = document.querySelector('#btnSpeak');
+        var synth = window.speechSynthesis;
+        var voices = [];
+        PopulateVoices();
+        if(speechSynthesis !== undefined){
+            speechSynthesis.onvoiceschanged = PopulateVoices;
+        }
+
+        btnSpeak.addEventListener('click', ()=> {
+            var toSpeak = new SpeechSynthesisUtterance(txtInput.value);
+            var selectedVoiceName = voiceList.selectedOptions[0].getAttribute('data-name');
+            voices.forEach((voice)=>{
+                if(voice.name === selectedVoiceName){
+                    toSpeak.voice = voice;
+                }
+            });
+            synth.speak(toSpeak);
+        });
+
+        function PopulateVoices(){
+            voices = synth.getVoices();
+            var selectedIndex = voiceList.selectedIndex < 0 ? 0 : voiceList.selectedIndex;
+            voiceList.innerHTML = '';
+            voices.forEach((voice)=>{
+                var listItem = document.createElement('option');
+                listItem.textContent = voice.name;
+                listItem.setAttribute('data-lang', voice.lang);
+                listItem.setAttribute('data-name', voice.name);
+                voiceList.appendChild(listItem);
+            });
+
+            voiceList.selectedIndex = selectedIndex;
+        }
+    </script>
+</body>
+<body>
+    <footer>
+    <p>Voicebox!, limited</p>
+</footer>
+</body>
+
+</html>

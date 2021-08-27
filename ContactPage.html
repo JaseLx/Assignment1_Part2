@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+            div.first {
+            border: 2px solid black;
+      padding: 25px;
+      background-color: rgb(174, 188, 207);
+      background-repeat: no-repeat;
+      background-size: 800px 800px;
+        
+        }
+        footer {
+            text-align: center;
+            background-color: grey;
+            color: white;
+            padding: 20px;
+        }
+    p.a {
+      font: bold 50px Arial, sans-serif;
+    }    
+        /* Style the body */
+    body {
+      font-family: Arial;
+      margin: 0;
+    }
+    
+    /* Header/Logo Title */
+    .header {
+      padding: 20px;
+      text-align: center;
+      background: #0277e6;
+      color: white;
+      font-size: 35px;
+    }
+    ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+/* Stylings for the list function */
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+/* The .active styling allows for highlighting of the selected Navigation header */
+.active {
+  background-color: #0277e6;
+}
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #0277e6;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #0277e6;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+</head>
+<div class="header">
+    <h1>Voicebox!</h1>
+    <p>A platform for communication</p>
+    </div>
+<body>
+    <ul>
+        <li><a href="TTSTest.html">Voicebox!</a></li>
+        <li><a href="AboutPage.html">About</a></li>
+        <li><a class="active" href="ContactPage.html">Contact</a></li>
+      </ul>
+<p class="a" align="center">HAVE SOME QUESTIONS?</p>
+<!-- Following is for the Form function for the user to fill, comprised of labels and input functions, following a region selector with the options -->
+<div class="container">
+  <form action="/action_page.php">
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" placeholder="Your Email..">
+
+    <label for="country">Country</label>
+    <select id="country" name="country">
+      <option value="australia">Australia</option>
+      <option value="canada">Canada</option>
+      <option value="usa">USA</option>
+      <option value="France">France</option>
+      <option value="Middle East">Middle East</option>
+      <option value="China">China</option>
+      <option value="UK">UK</option>
+    </select>
+    <!-- Subject box for users to input their own data. -->
+    <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+    <input type="submit" value="Submit">
+  </form>
+</div>
+<body> 
+  <footer>
+    <p>Voicebox!, limited</p>
+</footer>
+</body>
+</html>
